@@ -54,23 +54,22 @@ const App = {
     }
   },
   computed: {
+    // тут стоит определить несколько свойств:
+    // 1. текущий выбранный шаг
     activeStep() {
       if (this.activeIndex < this.steps.length - 1) {
         return this.steps[this.activeIndex]
-      } else {
-        return this.steps[this.steps.length - 1]
       }
+      return this.steps[this.steps.length - 1]
     },
+    // 2. выключена ли кнопка назад
     isBackDisable() {
       return this.activeIndex === 0
     },
+    // 3. находимся ли мы на последнем шаге
     isLastStep() {
       return this.activeIndex === this.steps.length - 1
     }
-    // тут стоит определить несколько свойств:
-    // 1. текущий выбранный шаг
-    // 2. выключена ли кнопка назад
-    // 3. находимся ли мы на последнем шаге
   }
 }
 
