@@ -163,6 +163,10 @@ h3 {
   background: #fff;
 }
 
+.description {
+  height: 6rem;
+}
+
 .card.center {
   display: flex;
   flex-direction: column;

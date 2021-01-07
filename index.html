@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<div class="container" id="app">
+<div class="container" id="app" v-cloak>
   <div class="card">
     <h1>План по изучению Vue.js</h1>
-    {{ activeStep.text }}
+    <div class="description">{{ activeStep.text }}</div>
     <div class="steps">
       <div class="steps-content">
 
