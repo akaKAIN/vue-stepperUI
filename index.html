@@ -11,20 +11,24 @@
 <div class="container" id="app">
   <div class="card">
     <h1>План по изучению Vue.js</h1>
-      {{ activeStep.text }}
+    {{ activeStep.text }}
     <div class="steps">
       <div class="steps-content">
 
       </div>
       <ul class="steps-list">
-        <li v-for="(_, idx) in steps" @click="setActive(idx)"
+        <li v-for="(step, idx) in steps" @click="setActive(idx)"
             :class="['steps-item', {'active': activeIndex === idx, 'done': idx < activeIndex }]">
-          <span>{{ idx + 1 }}</span> Шаг {{ idx + 1 }}
+          <span>{{ idx + 1 }}</span> {{ step.title }}
         </li>
       </ul>
       <div>
-        <button class="btn" :disabled="isBackDisable" @click="prev">Назад</button>
-        <button class="btn primary" @click="nextOrFinish" v-if="activeIndex < steps.length">{{ isLastStep ? 'Закончить' : 'Вперед'}}</button>
+        <button class="btn" :disabled="isBackDisable" @click="prev">
+          {{ !isFinished ? 'Назад' : 'Начать заного' }}
+        </button>
+        <button class="btn primary" @click="nextOrFinish" v-if="!isFinished">
+          {{ isLastStep ? 'Закончить' : 'Вперед'}}
+        </button>
       </div>
     </div>
   </div>
