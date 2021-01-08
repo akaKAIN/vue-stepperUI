@@ -36,7 +36,6 @@ const App = {
       // когда нажимаем кнопку назад
       if (this.isFinished) {
         this.reset()
-        return
       }
       if (this.activeIndex > 0) {
         this.activeIndex--
@@ -52,10 +51,9 @@ const App = {
       if (this.isFinished) {
         return
       }
-      const len = this.steps.length - 1
-      if (this.activeIndex < len) {
+      if (!this.isLastStep) {
         this.activeIndex++
-      } if (this.activeIndex === len) {
+      } else {
         this.isFinished = true
       }
     },
@@ -71,10 +69,7 @@ const App = {
     // тут стоит определить несколько свойств:
     // 1. текущий выбранный шаг
     activeStep() {
-      if (this.activeIndex < this.steps.length - 1) {
-        return this.steps[this.activeIndex]
-      }
-      return this.steps[this.steps.length - 1]
+      return this.steps[this.activeIndex]
     },
     // 2. выключена ли кнопка назад
     isBackDisable() {
